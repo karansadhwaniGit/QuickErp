@@ -76,14 +76,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Categories</span>
+                    <i class="fas fa-users "></i>
+                    <span>Suppliers</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Manage Categories:</h6>
-                        <a class="collapse-item" href="{{route('categories.create')}}">Add Category</a>
-                        <a class="collapse-item" href="{{route('categories.index')}}">Manage Category</a>
+                        <h6 class="collapse-header">Manage Supplier's:</h6>
+                        <a class="collapse-item" href="{{route('suppliers.create')}}">Add Supplier</a>
+                        <a class="collapse-item" href="{{route('suppliers.index')}}">Manage Supplier</a>
                     </div>
                 </div>
             </li>
