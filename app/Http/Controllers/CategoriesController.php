@@ -16,7 +16,6 @@ class CategoriesController extends Controller
     public function index(Categories $category)
     {
         $categories=Categories::paginate(10);
-        session()->flash('success','Category Added Successfully!');
         return view('manage-categories',compact('categories'));
     }
 
@@ -41,7 +40,7 @@ class CategoriesController extends Controller
         $category=Categories::create([
             'name'=>$request->name
         ]);
-        // dd($category);
+        session()->flash('success','Category Added Successfully!');
         return redirect(route('categories.index'));
     }
 

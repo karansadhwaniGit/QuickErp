@@ -370,8 +370,25 @@
 
                 </div>
                 <!-- /.container-fluid --> --}}
+                 @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show px-3" role="alert">
+                        {{ session()->get('success')
+                        }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @elseif(session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session()->get('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+
                 @yield('content')
-            <!-- End of Main Content -->
+                <!-- End of Main Content -->
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">

@@ -4,6 +4,7 @@
 
         <div id="content-wrapper" class="d-flex flex-column">
 
+            @section('dashboard','dashboard')
             <!-- Main Content -->
             <div id="content">
 
