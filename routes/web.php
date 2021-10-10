@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\SuppliersController;
+use App\Models\Customers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +30,5 @@ Route::get('/404', function () {
 
 Route::resource('categories', CategoriesController::class);
 Route::resource('suppliers', SuppliersController::class);
+Route::resource('customers',CustomersController::class);
 require __DIR__.'/auth.php';
