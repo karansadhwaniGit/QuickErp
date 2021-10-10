@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SupplierRequest;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-
+        $suppliers=Suppliers::paginate(10);
+        return view('manage-suppliers',compact('suppliers'));
     }
 
     /**
@@ -33,9 +35,18 @@ class SuppliersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SupplierRequest $request)
     {
-        //
+        Suppliers::create([
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'gst_no'=>$request->gst_no,
+            'company_name'=>$request->company_name,
+            'phone_no'=>$request->phone_no,
+            'email'=>$request->email
+        ]);
+        session()->flash('success',"Supplier Added Successfully!");
+        return redirect(route('suppliers.index'));
     }
 
     /**
