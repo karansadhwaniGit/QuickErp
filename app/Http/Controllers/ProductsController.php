@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\products;
+use App\Models\Suppliers;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -14,7 +16,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        $products=Products::paginate(10);
+        return view('manage-products',compact('products'));
     }
 
     /**
@@ -24,7 +27,9 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        $categories=Categories::paginate(10);
+        $suppliers=Suppliers::paginate(10);
+        return view('add-product',compact('categories','suppliers'));
     }
 
     /**
@@ -35,7 +40,18 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        products::create([
+            'product_name'=>$request->product_name,
+            'specification'=>$request->specification,
+            'hsn'=>$request->hsn,
+            'supplier'=>$request->suppliers,
+            'category'=>$request->category,
+            'selling_price'=>$request->selling_price,
+            'eoq'=>$request->eoq,
+            'danger_level'=>$request->danger_level
+        ]);
+        session()->flash('success','Product Added Successfully!');
+        return redirect(route('products.index'));
     }
 
     /**

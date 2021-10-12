@@ -103,12 +103,12 @@
                 </div>
             </li>
 
-            {{--
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
                     aria-expanded="true" aria-controls="collapseFive">
-                    <i class="fas fa-user "></i>
+                    <i class="fas fa-bookmark"></i>
                     <span>Products</span>
                 </a>
                 <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -118,7 +118,7 @@
                         <a class="collapse-item" href="{{route('products.index')}}">Manage Products</a>
                     </div>
                 </div>
-            </li> --}}
+            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">

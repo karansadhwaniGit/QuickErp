@@ -22,7 +22,12 @@ class SuppliersFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'first_name'=>$this->faker->name('male'),
+            'last_name'=>$this->faker->lastName(),
+            'gst_no'=>$this->faker->numberBetween(0,999999),
+            'company_name'=>$this->faker->company(),
+            'phone_no'=>$this->faker->phoneNumber(),
+            'email'=>$this->faker->email()
         ];
     }
 }
