@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CustomerMainController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SuppliersController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,5 @@ Route::resource('categories', CategoriesController::class);
 Route::resource('suppliers', SuppliersController::class);
 Route::resource('customers', CustomersController::class);
 Route::resource('products', ProductsController::class);
-
+Route::resource('sales', SalesController::class);
 require __DIR__.'/auth.php';
