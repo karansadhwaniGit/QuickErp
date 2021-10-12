@@ -53,7 +53,7 @@
                         <div class="btn btn-danger color-white"><i class="fa fa-trash"></i></div>
                         <div class="btn btn-success color-white"><i class="fa fa-pen"></i></div>
                     </td>
-                    <td>{{$supplier->created_at->diffForhumans()}}</td>
+                    <td>{{$supplier->created_at!=null?$supplier->created_at->diffForhumans():""}}</td>
                 </tr>
             @endforeach
         </tbody>

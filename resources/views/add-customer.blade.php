@@ -1,7 +1,7 @@
 @extends('layouts.sidebar.sidebar')
 @section('content')
 <div class="m-2 px-4 py-2 border border-dark rounded">
-<form action="{{route('suppliers.store')}}" method="post">
+<form action="{{route('customers.store')}}" method="post">
     @csrf
     <h3 class="text-center text-dark">Add Customer</h3>
     <div class="form-row">

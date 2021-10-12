@@ -21,7 +21,7 @@
                         </label>
                       </div>
                       &nbsp;&nbsp;&nbsp;&nbsp;
-                    <label for="">show&nbsp;<select name="manage-customer-table_length" aria-controls="manage-customer-table" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="15">15</option><option value="25">25</option><option value="-1">All</option></select>&nbsp;entries</label></div>
+                    <label for="">show&nbsp;<select name="manage-product-table_length" aria-controls="manage-product-table" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="15">15</option><option value="25">25</option><option value="-1">All</option></select>&nbsp;entries</label></div>
                 </form>
         </div>
         <div class="col-md-1">

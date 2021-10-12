@@ -45,7 +45,7 @@
                         <div class="btn btn-danger color-white"><i class="fa fa-trash"></i></div>
                         <div class="btn btn-success color-white"><i class="fa fa-pen"></i></div>
                     </td>
-                    <td>{{$category->created_at->diffForhumans()}}</td>
+                    <td>{{$category->created_at!=null?$category->created_at->diffForhumans():""}}</td>
                 </tr>
             @endforeach
         </tbody>

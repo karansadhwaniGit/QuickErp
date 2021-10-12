@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CustomerRequest;
-use App\Models\customers;
+use App\Models\products;
 use Illuminate\Http\Request;
 
-class CustomersController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $customers=Customers::paginate(10);
-        return view('manage-customers',compact('customers'));
+        //
     }
 
     /**
@@ -27,7 +25,6 @@ class CustomersController extends Controller
     public function create()
     {
         //
-        return view('add-customer');
     }
 
     /**
@@ -36,36 +33,29 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerRequest $request)
+    public function store(Request $request)
     {
-        Customers::create([
-            'first_name'=>$request->first_name,
-            'last_name'=>$request->last_name,
-            'gst_no'=>$request->gst_no,
-            'phone_no'=>$request->phone_no,
-            'email'=>$request->email
-        ]);
-        session()->flash('success',"Customer Added Successfully!");
-        return redirect(route('customers.index'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\customers  $customers
+     * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(customers $customers)
+    public function show(products $products)
     {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\customers  $customers
+     * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(customers $customers)
+    public function edit(products $products)
     {
         //
     }
@@ -74,10 +64,10 @@ class CustomersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\customers  $customers
+     * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, customers $customers)
+    public function update(Request $request, products $products)
     {
         //
     }
@@ -85,10 +75,10 @@ class CustomersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\customers  $customers
+     * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(customers $customers)
+    public function destroy(products $products)
     {
         //
     }

@@ -27,8 +27,7 @@ class CustomerRequest extends FormRequest
             'first_name'=>['min:3','string','required'],
             'last_name'=>['min:3','string','required'],
             'email'=>['required','email'],
-            'gst_no'=>['required','min:15','max:15','unique:suppliers,gst_no'],
-            'company_name'=>['required','min:3','string','unique:suppliers,company_name'],
+            'gst_no'=>['required','min:15','max:15','unique:customers,gst_no'],
             'phone_no'=>['min:10','max:10','required'],
         ];
     }
