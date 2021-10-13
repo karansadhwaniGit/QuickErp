@@ -6,6 +6,8 @@ use App\Models\Categories;
 use App\Models\products;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class ProductsController extends Controller
 {
@@ -31,6 +33,14 @@ class ProductsController extends Controller
         $suppliers=Suppliers::paginate(10);
         return view('add-product',compact('categories','suppliers'));
     }
+    public function createPDF(){
+        $data=products::all();
+
+        // dd(array_column($data[0]));
+        $pdf=PDF::loadView('pdf',array('data'=>$data));
+        $name=$data[0]->getTable().".pdf";
+        return $pdf->download($name);
+      }
 
     /**
      * Store a newly created resource in storage.
@@ -40,12 +50,13 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->suppliers);
         products::create([
             'product_name'=>$request->product_name,
             'specification'=>$request->specification,
             'hsn'=>$request->hsn,
-            'supplier'=>$request->suppliers,
-            'category'=>$request->category,
+            'supplier_id'=>$request->suppliers,
+            'category_id'=>$request->category,
             'selling_price'=>$request->selling_price,
             'eoq'=>$request->eoq,
             'danger_level'=>$request->danger_level

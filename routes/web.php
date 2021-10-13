@@ -30,6 +30,12 @@ Route::get('/404', function () {
     return view('pagenotfound');
 })->name('404');
 
+Route::get('/suppliers/pdf',[SuppliersController::class,'createPDF']);
+Route::get('/categories/pdf',[CategoriesController::class,'createPDF']);
+Route::get('/products/pdf',[ProductsController::class,'createPDF']);
+Route::get('/customers/pdf',[CustomersController::class,'createPDF']);
+Route::get('/sales/pdf',[SalesController::class,'createPDF']);
+
 Route::resource('categories', CategoriesController::class);
 Route::resource('suppliers', SuppliersController::class);
 Route::resource('customers', CustomersController::class);

@@ -14,8 +14,8 @@
                           <input type="radio" name="options" id="option1" autocomplete="off" checked> CSV
                         </label>
                         <label class="btn btn-secondary">
-                          <input type="radio" name="options" id="option2" autocomplete="off"> PDF
-                        </label>
+                            <a class="btn btn-secondary" href="{{ URL::to('/customers/pdf') }}"> PDF</a>
+                          </label>
                         <label class="btn btn-secondary">
                           <input type="radio" name="options" id="option3" autocomplete="off"> Excel
                         </label>

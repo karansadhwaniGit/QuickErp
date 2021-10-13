@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerRequest;
 use App\Models\customers;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class CustomersController extends Controller
 {
@@ -28,6 +29,14 @@ class CustomersController extends Controller
     {
         //
         return view('add-customer');
+    }
+    public function createPDF(){
+        $data=customers::all();
+
+        // dd(array_column($data[0]));
+        $pdf=PDF::loadView('pdf',array('data'=>$data));
+        $name=$data[0]->getTable().".pdf";
+        return $pdf->download($name);
     }
 
     /**

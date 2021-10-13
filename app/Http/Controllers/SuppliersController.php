@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SupplierRequest;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Facade\FlareClient\View;
 
 class SuppliersController extends Controller
 {
@@ -28,7 +30,14 @@ class SuppliersController extends Controller
     {
         return view('add-supplier');
     }
+    public function createPDF(){
+        $data=Suppliers::all();
 
+        // dd(array_column($data[0]));
+        $pdf=PDF::loadView('pdf',array('data'=>$data));
+        $name=$data[0]->getTable().".pdf";
+        return $pdf->download($name);
+      }
     /**
      * Store a newly created resource in storage.
      *

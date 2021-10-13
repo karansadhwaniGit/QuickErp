@@ -36,9 +36,9 @@
     {{-- HSN --}}
     <div class="form-group col-md-6">
         <label for="hsn">Suppliers</label>
-        <select name="suppliers" id="suppliers" class="form-control">
+        <select name="suppliers" id="supplier" class="form-control">
             @foreach ($suppliers as $supplier)
-                <option name="{{$supplier->first_name." ".$supplier->last_name}}" id="{{$supplier->first_name." ".$supplier->last_name}}" value="{{$supplier->first_name." ".$supplier->last_name}}">{{$supplier->first_name." ".$supplier->last_name}}</option>
+                <option name="{{$supplier->first_name." ".$supplier->last_name}}" id="{{$supplier->first_name." ".$supplier->last_name}}" value="{{$supplier->id}}">{{$supplier->first_name." ".$supplier->last_name}}</option>
             @endforeach
         </select>
         @error('suppliers')
@@ -51,7 +51,7 @@
         <label for="hsn">Category</label>
         <select name="category" id="category" class="form-control">
             @foreach ($categories as $category)
-                <option name="{{$category->name}}" id="{{$category->name}}" value="{{$category->name}}">{{$category->name}}</option>
+                <option name="{{$category->name}}" id="{{$category->name}}" value="{{$category->id}}">{{$category->name}}</option>
             @endforeach
         </select>
         @error('category')

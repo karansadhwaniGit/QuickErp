@@ -14,7 +14,7 @@
                           <input type="radio" name="options" id="option1" autocomplete="off" checked> CSV
                         </label>
                         <label class="btn btn-secondary">
-                          <input type="radio" name="options" id="option2" autocomplete="off"> PDF
+                          <a class="btn btn-secondary" href="{{ URL::to('/suppliers/pdf') }}"> PDF</a>
                         </label>
                         <label class="btn btn-secondary">
                           <input type="radio" name="options" id="option3" autocomplete="off"> Excel
@@ -41,7 +41,7 @@
         </tr>
         </thead>
         <tbody>
-            @foreach ($suppliers as $supplier )
+            @foreach ($suppliers  as $supplier )
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$supplier->first_name." ".$supplier->last_name}}</td>

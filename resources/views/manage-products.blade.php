@@ -14,7 +14,7 @@
                           <input type="radio" name="options" id="option1" autocomplete="off" checked> CSV
                         </label>
                         <label class="btn btn-secondary">
-                          <input type="radio" name="options" id="option2" autocomplete="off"> PDF
+                            <a class="btn btn-secondary" href="{{ URL::to('/products/pdf') }}"> PDF</a>
                         </label>
                         <label class="btn btn-secondary">
                           <input type="radio" name="options" id="option3" autocomplete="off"> Excel
@@ -50,12 +50,12 @@
                     <td>{{$product->product_name}}</td>
                     <td>{{$product->specification}}</td>
                     <td>{{$product->quantity}}</td>
-                    <td>{{$product->selling_rate}}</td>
-                    <td>{{$product->selling_rate}}</td>
-                    <td>{{$product->category}}</td>
+                    <td>{{$product->selling_price}}</td>
+                    <td>{{$product->selling_price}}</td>
                     <td>{{$product->eoq}}</td>
+                    <td>{{$product->category}}</td>
                     <td>{{$product->danger_level}}</td>
-                    <td>{{$product->actions}}</td>
+                    <td>{{$product->supplier_id}}</td>
                     <td>
                         <div class="btn btn-danger color-white"><i class="fa fa-trash"></i></div>
                         <div class="btn btn-success color-white"><i class="fa fa-pen"></i></div>
