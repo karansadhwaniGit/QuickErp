@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SuppliersController;
+use App\Models\Suppliers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,13 @@ Route::get('/categories/pdf',[CategoriesController::class,'createPDF']);
 Route::get('/products/pdf',[ProductsController::class,'createPDF']);
 Route::get('/customers/pdf',[CustomersController::class,'createPDF']);
 Route::get('/sales/pdf',[SalesController::class,'createPDF']);
+
+
+Route::get('/supplierSearch',[SuppliersController::class,'searchSuppliers'])->name('SupplierSearch');
+Route::get('/categorySearch',[CategoriesController::class,'searchCategories'])->name('CategoriesSearch');
+Route::get('/customerSearch',[CustomersController::class,'searchCustomers'])->name('CustomersSearch');
+Route::get('/productSearch',[ProductsController::class,'searchProducts'])->name('ProductsSearch');
+
 
 Route::resource('categories', CategoriesController::class);
 Route::resource('suppliers', SuppliersController::class);

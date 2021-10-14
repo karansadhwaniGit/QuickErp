@@ -3,12 +3,15 @@
 <div class="card text-center mx-3 my-3 p-2 shadow">
     <div class="row">
         <div class="col-md-12">
-            <form>
+            <form method="GET" action="{{route('CustomersSearch')}}">
+                @csrf
                 <div class="form-row form-inline">
                     <label for="" class="text-primary">Search</label>
                     <div class="p-3">
-                      <input type="text" class="form-control" placeholder="Search.....">
+                      <input type="text" value="{{app('request')->input('query')}}" class="form-control" id="query" name="query" placeholder="Search.....">
+                      <button type="submit" class="btn btn-primary">Search</button>
                     </div>
+                 </form>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
                           <input type="radio" name="options" id="option1" autocomplete="off" checked> CSV
@@ -22,7 +25,6 @@
                       </div>
                       &nbsp;&nbsp;&nbsp;&nbsp;
                     <label for="">show&nbsp;<select name="manage-product-table_length" aria-controls="manage-product-table" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="15">15</option><option value="25">25</option><option value="-1">All</option></select>&nbsp;entries</label></div>
-                </form>
         </div>
         <div class="col-md-1">
         </div>

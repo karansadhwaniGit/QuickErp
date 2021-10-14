@@ -21,14 +21,12 @@
       <hr>
       <div class="">
         <form class="form-inline w-100">
-            <select name="" id="" class="form-control mx-2" style="font-size:18px">
-                <option value="">Categories</option>
-                <option value="">Abcd</option>
-                <option value="">Abcd</option>
-                <option value="">Abcd</option>
-                <option value="">Abcd</option>
+            <select name="" id="categories" onchange="myFunction()" class="form-control mx-2" style="font-size:18px">
+                @foreach ($categories as $category)
+                    <option value="{{$category->name}}">{{$category->name}}</option>
+                @endforeach
             </select>
-            <select name="" id="" class="form-control mx-2" style="font-size:18px">
+            <select name="" id="products" class="form-control mx-2" style="font-size:18px">
                 <option value="">Product</option>
                 <option value="">Abcd</option>
                 <option value="">Abcd</option>
@@ -43,4 +41,10 @@
           </form>
       </div>
     </div>
+    <script>
+        function myFunction(){
+            alert((document.getElementById('categories')).value);
+            
+        }
+    </script>
 @endsection

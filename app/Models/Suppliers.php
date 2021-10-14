@@ -9,4 +9,7 @@ class Suppliers extends Model
 {
     protected $guarded=[];
     use HasFactory;
+    public function address(){
+        return $this->belongsToMany(Address::class,'address_suppliers');
+    }
 }

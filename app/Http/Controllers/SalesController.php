@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
+use App\Models\products;
 use App\Models\Sales;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -24,7 +26,8 @@ class SalesController extends Controller
      */
     public function create()
     {
-        return view('add-sales');
+        $categories=Categories::with('getProducts')->get();
+        return view('add-sales',compact('categories'));
     }
 
     /**

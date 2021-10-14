@@ -17,7 +17,7 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-        $suppliers=Suppliers::paginate(10);
+        $suppliers=Suppliers::with('address')->get();
         return view('manage-suppliers',compact('suppliers'));
     }
 
@@ -38,6 +38,15 @@ class SuppliersController extends Controller
         $name=$data[0]->getTable().".pdf";
         return $pdf->download($name);
       }
+    public function searchSuppliers(Request $request)
+    {
+        $request->validate([
+            'query'=>'required',
+        ]);
+        $query=$request->input('query');
+        $suppliers=Suppliers::where('last_name','like',"%$query%")->orWhere('first_name','like',"%$query%")->orWhere('gst_no','like',"%$query%")->orWhere('email','like',"%$query%")->orWhere('phone_no','like',"%$query%")->orWhere('company_name','like',"%$query%")->paginate(6);
+        return view('manage-suppliers',compact('suppliers'));
+    }
     /**
      * Store a newly created resource in storage.
      *

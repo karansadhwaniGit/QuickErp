@@ -18,7 +18,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products=Products::paginate(10);
+        $products=Products::with('getCategory','suppliers')->get();
+        // dd($products);
         return view('manage-products',compact('products'));
     }
 
@@ -40,6 +41,15 @@ class ProductsController extends Controller
         $pdf=PDF::loadView('pdf',array('data'=>$data));
         $name=$data[0]->getTable().".pdf";
         return $pdf->download($name);
+      }
+      public function searchProducts(Request $request)
+      {
+          $request->validate([
+              'query'=>'required',
+          ]);
+          $query=$request->input('query');
+          $products=products::where('product_name','like',"%$query%")->orWhere('specification','like',"%$query%")->orWhere('hsn','like',"%$query%")->orWhere('selling_price','like',"%$query%")->orWhere('eoq','like',"%$query%")->orWhere('danger_level','like',"%$query%")->paginate(6);
+          return view('manage-products',compact('products'));
       }
 
     /**

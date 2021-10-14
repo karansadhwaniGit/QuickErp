@@ -38,7 +38,16 @@ class CustomersController extends Controller
         $name=$data[0]->getTable().".pdf";
         return $pdf->download($name);
     }
+    public function searchCustomers(Request $request)
+    {
+        $request->validate([
+            'query'=>'required',
+        ]);
+        $query=$request->input('query');
+        $customers=Customers::where('first_name','like',"%$query%")->orWhere('last_name','like',"%$query%")->orWhere('phone_no','like',"%$query%")->orWhere('gst_no','like',"%$query%")->orWhere('email','like',"%$query%")->paginate(6);
+        return view('manage-customers',compact('customers'));
 
+    }
     /**
      * Store a newly created resource in storage.
      *

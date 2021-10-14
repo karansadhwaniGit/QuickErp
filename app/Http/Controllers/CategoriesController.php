@@ -17,10 +17,19 @@ class CategoriesController extends Controller
      */
     public function index(Categories $category)
     {
-        $categories=Categories::paginate(10);
+        $categories=Categories::all();
         return view('manage-categories',compact('categories'));
     }
+    public function searchCategories(Request $request)
+    {
+        $request->validate([
+            'query'=>'required',
+        ]);
+        $query=$request->input('query');
+        $categories=Categories::where('name','like',"%$query%")->paginate(6);
+        return view('manage-categories',compact('categories'));
 
+    }
     /**
      * Show the form for creating a new resource.
      *
