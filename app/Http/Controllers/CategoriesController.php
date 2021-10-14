@@ -17,7 +17,7 @@ class CategoriesController extends Controller
      */
     public function index(Categories $category)
     {
-        $categories=Categories::all();
+        $categories=Categories::sortable()->paginate(10);
         return view('manage-categories',compact('categories'));
     }
     public function searchCategories(Request $request)

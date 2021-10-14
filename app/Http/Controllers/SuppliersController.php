@@ -17,7 +17,7 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-        $suppliers=Suppliers::with('address')->get();
+        $suppliers=Suppliers::with('address')->sortable()->get();
         return view('manage-suppliers',compact('suppliers'));
     }
 

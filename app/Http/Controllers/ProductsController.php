@@ -18,7 +18,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products=Products::with('getCategory','suppliers')->get();
+        $products=Products::with('getCategory','suppliers')->sortable()->get();
         // dd($products);
         return view('manage-products',compact('products'));
     }

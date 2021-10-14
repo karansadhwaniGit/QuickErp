@@ -33,11 +33,11 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">GST No.</th>
-            <th scope="col">Company Name</th>
-            <th scope="col">Phone No.</th>
-            <th scope="col">Email</th>
+            <th scope="col">@sortablelink('first_name')</th>
+            <th scope="col">@sortablelink('gst_no')</th>
+            <th scope="col">@sortablelink('Company Name')</th>
+            <th scope="col">@sortablelink('phone_no')</th>
+            <th scope="col">@sortablelink('email')</th>
             <th scope="col">Actions</th>
             <th scope="col">Added Since</th>
             <th scope="col">Country</th>

@@ -33,7 +33,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
+            <th scope="col">@sortablelink('name')</th>
             <th>Actions</th>
             <th scope="col">Added Since</th>
           </tr>

@@ -33,12 +33,12 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Specification</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Selling Rate</th>
+            <th scope="col">@sortablelink('product_name')</th>
+            <th scope="col">@sortablelink('specification')</th>
+            <th scope="col">@sortablelink('quantity')</th>
+            <th scope="col">@sortablelink('selling_rate')</th>
             <th scope="col">WEF</th>
-            <th scope="col">Danger Level</th>
+            <th scope="col">@sortablelink('danger_level')</th>
             <th scope="col">Category</th>
             <th scope="col">Supplier Names</th>
             <th scope="col">Actions</th>
