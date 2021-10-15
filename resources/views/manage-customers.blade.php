@@ -24,7 +24,6 @@
                         </label>
                       </div>
                       &nbsp;&nbsp;&nbsp;&nbsp;
-                    <label for="">show&nbsp;<select name="manage-product-table_length" aria-controls="manage-product-table" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="15">15</option><option value="25">25</option><option value="-1">All</option></select>&nbsp;entries</label></div>
         </div>
         <div class="col-md-1">
         </div>
@@ -58,5 +57,10 @@
             @endforeach
         </tbody>
       </table>
+      <div class="col-4"></div>
+      <div class="text-center col-4">
+          {!! $customers->links("pagination::bootstrap-4") !!}
+      </div>
+      <div class="col-4"></div>
 </div>
 @endsection
