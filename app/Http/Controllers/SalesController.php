@@ -17,6 +17,8 @@ class SalesController extends Controller
      */
     public function index()
     {
+        $sales=Sales::with('products')->get();
+        dd($sales[0]->products->selling_price);
     }
 
     /**
@@ -29,7 +31,6 @@ class SalesController extends Controller
         $categories=Categories::with('getProducts')->get();
         return view('add-sales',compact('categories'));
     }
-
     /**
      * Store a newly created resource in storage.
      *

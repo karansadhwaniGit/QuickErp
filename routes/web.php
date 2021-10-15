@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CustomerMainController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SuppliersController;
@@ -24,9 +25,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 Route::get('/404', function () {
     return view('pagenotfound');
 })->name('404');
@@ -36,7 +37,7 @@ Route::get('/categories/pdf',[CategoriesController::class,'createPDF']);
 Route::get('/products/pdf',[ProductsController::class,'createPDF']);
 Route::get('/customers/pdf',[CustomersController::class,'createPDF']);
 Route::get('/sales/pdf',[SalesController::class,'createPDF']);
-
+Route::get('/dashboard',[DashboardController::class,'dashboardManager'])->name('dashboard');
 
 Route::get('/supplierSearch',[SuppliersController::class,'searchSuppliers'])->name('SupplierSearch');
 Route::get('/categorySearch',[CategoriesController::class,'searchCategories'])->name('CategoriesSearch');
