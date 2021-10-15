@@ -1,5 +1,6 @@
 @extends('layouts.sidebar.sidebar')
 @section('content')
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <!-- Content Wrapper -->
 
         <div id="content-wrapper" class="d-flex flex-column">
@@ -111,7 +112,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Sales Overview</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -130,7 +131,58 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        <div id="myAreaChart"  style="height:100%"></div>
+                                        <script>
+                                            var datas = <?php echo json_encode($datas) ?>
+
+                                            Highcharts.chart('myAreaChart',{
+                                            title:{
+                                                text:'Monthly Sales Stats,2021'
+                                            },
+                                            subtitle:{
+                                                text:'Source :Quick ERP'
+                                            },
+                                            xAxis:{
+                                                categories:['Jan','Feb','March','Apr','May','Jun','July','August','September','October','November','December']
+                                            },
+                                            yAxis:{
+                                                title:{
+                                                    text:'Sales'
+                                                }
+                                            },
+                                            legend:{
+                                                layout:'vertical',
+                                                align:'right',
+                                                berticalAlign:'middle'
+                                            },
+                                            plotOptions:{
+                                                series:{
+                                                    allowPointSelect:true
+                                                }
+                                            },
+                                            series:[{
+                                                name:'Sales Month',
+                                                data:datas
+                                            }],
+                                            responsive:{
+                                                rules:[
+                                                    {
+                                                        condition:{
+                                                            maxWidth:500
+                                                        },
+                                                        chartOptions:{
+                                                            legend:{
+                                                                layout:'horizontal',
+                                                                align:'center',
+                                                                verticalAlign:'bottom'
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                            })
+
+                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -181,6 +233,7 @@
 
                     <!-- Content Row -->
                     <div class="row">
+
 
                         <!-- Content Column -->
                         <div class="col-lg-6 mb-4">

@@ -21,10 +21,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
@@ -50,4 +46,12 @@ Route::resource('suppliers', SuppliersController::class);
 Route::resource('customers', CustomersController::class);
 Route::resource('products', ProductsController::class);
 Route::resource('sales', SalesController::class);
+
+
+Route::get('/', function () {
+    return view(route('login'));
+});
+
+
+
 require __DIR__.'/auth.php';

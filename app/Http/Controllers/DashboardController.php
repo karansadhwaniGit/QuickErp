@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\purchase;
 use App\Models\Sales;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -13,7 +14,8 @@ class DashboardController extends Controller
         $sales=Sales::with('products')->get();
         $sumSales=0;
         foreach($sales as $sale){
-            $sumSales+=$sale->products->selling_price*$sale->quantity;
+            $selling_price=$sale->products!=null?$sale->products->selling_price:"0";
+            $sumSales+=$selling_price*$sale->quantity;
         }
         // sum purchase whole
         $purchases=purchase::all();
@@ -33,6 +35,29 @@ class DashboardController extends Controller
         foreach($purchasesToday as $purchaseToday){
             $sumPurchasesToday+=$purchase->quantity*$purchase->purchase_rate;
         }
-        return view('dashboard',compact('sumSales','sumPurchases','sumSalesToday','sumPurchasesToday'));
+
+        // Chart For Sales
+        $users= Sales::select(DB::raw("COUNT(*) as count"))
+        ->whereYear('created_at',date('Y'))
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('count');
+        $months= Sales::select(DB::raw("Month(created_at) as month"))
+                        ->whereYear('created_at',date('Y'))
+                        ->groupBy(DB::raw("Month(created_at)"))
+                        ->pluck('month');
+        $datas= array(0,0,0,0,0,0,0,0,0,0,0,0);
+        foreach($months as $index=>$month){
+            $datas[$month]=$users[$index];
+        }
+
+        // Charts(pie) For Products
+        // $sale=DB::table('sales')
+        //     ->join('products', 'sales.product_id', '=', 'products.user_id')
+        //      ->select('products.*');
+
+        //      dd($sale);
+
+
+        return view('dashboard',compact('sumSales','sumPurchases','sumSalesToday','sumPurchasesToday','datas'));
     }
 }
