@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\products;
 use App\Models\purchase;
 use App\Models\Sales;
 use Illuminate\Http\Request;
@@ -51,13 +52,12 @@ class DashboardController extends Controller
         }
 
         // Charts(pie) For Products
-        // $sale=DB::table('sales')
-        //     ->join('products', 'sales.product_id', '=', 'products.user_id')
-        //      ->select('products.*');
-
-        //      dd($sale);
-
-
-        return view('dashboard',compact('sumSales','sumPurchases','sumSalesToday','sumPurchasesToday','datas'));
+        $categories=products::with('getCategory')->get()->groupBy('category_id');
+        $dataCategoryWise=[];
+        foreach($categories as $category){
+            $dataCategoryWiseCount[]=$category->count();
+            $dataCategoryWiseName[]=$category[0]->getCategory->name;
+        }
+        return view('dashboard',compact('sumSales','sumPurchases','sumSalesToday','sumPurchasesToday','datas','dataCategoryWiseCount','dataCategoryWiseName'));
     }
 }
